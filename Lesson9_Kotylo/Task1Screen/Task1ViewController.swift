@@ -1,0 +1,71 @@
+//
+//  FirstTaskViewController.swift
+//  Lesson9_Kotylo
+//
+//  Created by Кирилл Котыло on 30.03.25.
+//
+
+
+import UIKit
+
+class Task1ViewController: UIViewController {
+   
+    let task1View = Task1View()
+    
+    override func loadView() {
+        view = task1View
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupViews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let widthHeight = CGFloat.random(in: 30...100)
+        let x = CGFloat.random(in: 0...view.frame.width - widthHeight)
+        let y = CGFloat.random(in: 100...view.frame.height - widthHeight )
+        
+        task1View.roundButton.layer.cornerRadius = widthHeight / 2
+        task1View.roundButton.frame = CGRect(x: x, y: y, width: widthHeight, height: widthHeight)
+        task1View.roundButton.backgroundColor = .random
+        
+        task1View.scoreLabel.frame = CGRect(x: view.frame.width / 4, y: 50, width: view.frame.width/2, height: 50)
+        
+        task1View.backButton.frame = CGRect(x: 20, y: 30, width: 50, height: 50)
+    
+    }
+    
+    func setupViews() {
+        task1View.roundButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
+        task1View.backButton.addTarget(self, action: #selector(tapBackButton(_:)), for: .touchUpInside)
+    }
+    
+//MARK: -Action View
+    @objc private func tapButton(_ sender: UIButton) {
+        task1View.count += 1
+        task1View.scoreLabel.text = "Score: \(task1View.count)"
+        viewDidLayoutSubviews()
+    }
+    
+    @objc private func tapBackButton(_ sender: UIButton) {
+        let controller = MainViewController()
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
+    }
+}
+// MARK: -extension UIColor to func random
+extension UIColor {
+    static var random: UIColor {
+        return UIColor(
+            red: .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue: .random(in: 0...1),
+            alpha: 0.5
+        )
+    }
+}
+
+#Preview(traits: .portrait) {
+    Task1ViewController()
+}
