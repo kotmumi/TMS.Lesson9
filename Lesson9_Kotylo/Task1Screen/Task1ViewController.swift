@@ -49,11 +49,10 @@ class Task1ViewController: UIViewController {
     }
     
     @objc private func tapBackButton(_ sender: UIButton) {
-        let controller = MainViewController()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }
+
 // MARK: -extension UIColor to func random
 extension UIColor {
     static var random: UIColor {
