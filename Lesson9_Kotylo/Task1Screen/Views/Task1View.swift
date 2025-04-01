@@ -34,18 +34,6 @@ class Task1View: UIView {
         return button
     }()
     
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("<", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 30, weight: .black)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.tintColor = .black
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -60,6 +48,5 @@ class Task1View: UIView {
     func setupViews() {
         addSubview(roundButton)
         addSubview(scoreLabel)
-        addSubview(backButton)
     }
 }

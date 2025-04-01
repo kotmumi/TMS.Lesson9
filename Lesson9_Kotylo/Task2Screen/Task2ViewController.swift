@@ -21,7 +21,6 @@ class Task2ViewController: UIViewController {
     }
     
     func setupViews(){
-        task2View.backButton.addTarget(self, action: #selector(tapBackButton(_:)), for: .touchUpInside)
         task2View.upButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         task2View.downButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
         task2View.leftButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
@@ -29,7 +28,6 @@ class Task2ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        task2View.backButton.frame = CGRect(x: 20, y: 30, width: 50, height: 50)
         
         task2View.roundLabel.frame = CGRect(x: view.frame.width / 2 - 16, y: view.frame.height / 2 - 16, width: 32, height: 32)
         
@@ -41,7 +39,6 @@ class Task2ViewController: UIViewController {
         
         task2View.rightButton.frame = CGRect(x: view.frame.width / 2 + 48, y: view.frame.height - 150, width: 64, height: 64)
     }
-    
     
     @objc private func tapButton(_ sender: UIButton) {
         var x = task2View.roundLabel.frame.origin.x
@@ -68,10 +65,6 @@ class Task2ViewController: UIViewController {
         }
         task2View.roundLabel.frame.origin.x = x
         task2View.roundLabel.frame.origin.y = y
-    }
-    
-    @objc private func tapBackButton(_ sender: UIButton) {
-        dismiss(animated: true)
     }
 }
 

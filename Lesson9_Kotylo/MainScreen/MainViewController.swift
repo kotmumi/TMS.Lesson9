@@ -21,29 +21,26 @@ class MainViewController: UIViewController {
     }
     
     func setupViews() {
-        mainView.task1Button.addTarget(self, action: #selector(goFirstTask(_:)), for: .touchUpInside)
-        mainView.task2Button.addTarget(self, action: #selector(goSecondTask(_:)), for: .touchUpInside)
-        mainView.task3Button.addTarget(self, action: #selector(goThirdTask(_:)), for: .touchUpInside)
+        mainView.task1Button.addTarget(self, action: #selector(goTask(_:)), for: .touchUpInside)
+        mainView.task2Button.addTarget(self, action: #selector(goTask(_:)), for: .touchUpInside)
+        mainView.task3Button.addTarget(self, action: #selector(goTask(_:)), for: .touchUpInside)
     }
     
-    @objc private func goFirstTask(_ sender: UIButton) {
-        let controller = Task1ViewController()
+    @objc private func goTask(_ sender: UIButton) {
+        let controller: UIViewController
+        switch sender {
+            case mainView.task1Button:
+                controller = Task1ViewController()
+            case mainView.task2Button:
+                controller = Task2ViewController()
+            case mainView.task3Button:
+                controller = Task3ViewController()
+            default:
+                controller = UIViewController()
+        }
         controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
+        navigationController?.pushViewController(controller, animated: true)
     }
-    
-    @objc private func goSecondTask(_ sender: UIButton) {
-        let controller = Task2ViewController()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
-    }
-    
-    @objc private func goThirdTask(_ sender: UIButton) {
-        let controller = Task3ViewController()
-        controller.modalPresentationStyle = .fullScreen
-        present(controller, animated: true, completion: nil)
-    }
-    
 }
 
 #Preview(traits: .portrait) {

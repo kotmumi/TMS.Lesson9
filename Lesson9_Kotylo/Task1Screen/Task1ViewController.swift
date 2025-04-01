@@ -22,23 +22,21 @@ class Task1ViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        let widthHeight = CGFloat.random(in: 30...100)
-        let x = CGFloat.random(in: 0...view.frame.width - widthHeight)
-        let y = CGFloat.random(in: 100...view.frame.height - widthHeight )
         
-        task1View.roundButton.layer.cornerRadius = widthHeight / 2
-        task1View.roundButton.frame = CGRect(x: x, y: y, width: widthHeight, height: widthHeight)
+        let diameter = CGFloat.random(in: 30...100)
+        let x = CGFloat.random(in: 0...view.frame.width - diameter)
+        let y = CGFloat.random(in: 100...view.frame.height - diameter )
+        
+        task1View.roundButton.layer.cornerRadius = diameter / 2
+        task1View.roundButton.frame = CGRect(x: x, y: y, width: diameter, height: diameter)
         task1View.roundButton.backgroundColor = .random
         
         task1View.scoreLabel.frame = CGRect(x: view.frame.width / 4, y: 50, width: view.frame.width/2, height: 50)
         
-        task1View.backButton.frame = CGRect(x: 20, y: 30, width: 50, height: 50)
-    
     }
     
     func setupViews() {
         task1View.roundButton.addTarget(self, action: #selector(tapButton(_:)), for: .touchUpInside)
-        task1View.backButton.addTarget(self, action: #selector(tapBackButton(_:)), for: .touchUpInside)
     }
     
 //MARK: -Action View
@@ -46,10 +44,6 @@ class Task1ViewController: UIViewController {
         task1View.count += 1
         task1View.scoreLabel.text = "Score: \(task1View.count)"
         viewDidLayoutSubviews()
-    }
-    
-    @objc private func tapBackButton(_ sender: UIButton) {
-        dismiss(animated: true)
     }
 }
 

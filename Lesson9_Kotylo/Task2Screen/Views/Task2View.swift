@@ -13,8 +13,7 @@ class Task2View: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        button.setTitle("up", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .black)
+        button.setBackgroundImage(UIImage(systemName: "arrowshape.up.fill"), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.tintColor = .black
         button.layer.cornerRadius = 8
@@ -24,8 +23,7 @@ class Task2View: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        button.setTitle("down", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .black)
+        button.setBackgroundImage(UIImage(systemName: "arrowshape.down.fill"), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.tintColor = .black
         button.layer.cornerRadius = 8
@@ -36,8 +34,7 @@ class Task2View: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        button.setTitle("left", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .black)
+        button.setBackgroundImage(UIImage(systemName: "arrowshape.left.fill"), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.tintColor = .black
         button.layer.cornerRadius = 8
@@ -48,20 +45,7 @@ class Task2View: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
-        button.setTitle("right", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .black)
-        button.titleLabel?.adjustsFontSizeToFitWidth = true
-        button.tintColor = .black
-        button.layer.cornerRadius = 8
-        return button
-    }()
-    
-    let backButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("<", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 30, weight: .black)
+        button.setBackgroundImage(UIImage(systemName: "arrowshape.right.fill"), for: .normal)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.tintColor = .black
         button.layer.cornerRadius = 8
@@ -90,12 +74,10 @@ class Task2View: UIView {
     
     func setupViews() {
         backgroundColor = .white
-        addSubview(backButton)
         addSubview(roundLabel)
         addSubview(upButton)
         addSubview(downButton)
         addSubview(leftButton)
         addSubview(rightButton)
     }
-    
 }
