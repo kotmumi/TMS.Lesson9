@@ -49,7 +49,7 @@ class Task2ViewController: UIViewController {
                 y += 10
             }
         case task2View.upButton:
-            if y > 100 {
+            if y > navigationController?.navigationBar.frame.maxY ?? 0 + 10 {
                 y -= 10
             }
         case task2View.leftButton:
