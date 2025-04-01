@@ -9,6 +9,7 @@ import UIKit
 
 class CellCollectionView: UICollectionView {
     
+    let countCellLine = 4
     let flowLayout = UICollectionViewFlowLayout()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -21,7 +22,12 @@ class CellCollectionView: UICollectionView {
     }
     
     func setupView() {
+        self.collectionViewLayout = flowLayout
         self.translatesAutoresizingMaskIntoConstraints = false
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.sectionInset = .zero
+        
         self.register(CellView.self, forCellWithReuseIdentifier: "cell")
         delegate = self
         dataSource = self
@@ -30,7 +36,7 @@ class CellCollectionView: UICollectionView {
 
 extension CellCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1000
+        Int(collectionView.bounds.height) / Int(collectionView.bounds.width) * countCellLine * countCellLine
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,6 +44,14 @@ extension CellCollectionView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         return cell
+    }
+}
+
+extension CellCollectionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = collectionView.bounds.width / CGFloat(countCellLine)
+        return CGSize(width: width, height: width)
     }
 }
 

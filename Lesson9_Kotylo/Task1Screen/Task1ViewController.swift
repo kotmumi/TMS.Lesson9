@@ -10,6 +10,7 @@ import UIKit
 
 class Task1ViewController: UIViewController {
    
+    let rigidFeedback = UIImpactFeedbackGenerator(style: .rigid)
     let task1View = Task1View()
     
     override func loadView() {
@@ -43,6 +44,7 @@ class Task1ViewController: UIViewController {
     @objc private func tapButton(_ sender: UIButton) {
         task1View.count += 1
         task1View.scoreLabel.text = "Score: \(task1View.count)"
+        rigidFeedback.impactOccurred()
         viewDidLayoutSubviews()
     }
 }

@@ -34,10 +34,11 @@ class CellView: UICollectionViewCell {
     func setConstraints() {
         NSLayoutConstraint.activate([
             
-            labelCell.centerXAnchor.constraint(equalTo: centerXAnchor),
-            labelCell.centerYAnchor.constraint(equalTo: centerYAnchor),
-            labelCell.heightAnchor.constraint(equalToConstant: 60),
-            labelCell.widthAnchor.constraint(equalToConstant: 72),
+            labelCell.topAnchor.constraint(equalTo: topAnchor),
+            labelCell.bottomAnchor.constraint(equalTo: bottomAnchor),
+            labelCell.leadingAnchor.constraint(equalTo: leadingAnchor),
+            labelCell.trailingAnchor.constraint(equalTo: trailingAnchor),
+
         ])
     }
 }
